@@ -722,6 +722,10 @@ class PuzzleBoxGen2:
 
         new.energy = max(0.0, cell.energy + energy_delta + gr - dr)
 
+        # Soft cap: diminishing returns above 4.0 prevents runaway feedback
+        if new.energy > 4.0:
+            new.energy = 4.0 + (new.energy - 4.0) * 0.25
+
         # ── Stability dynamics ───────────────────────────────────────────────
         stability_delta = 0.0
         comfort_type = self.stability_comfort.get(cell.type)
