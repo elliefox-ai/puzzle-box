@@ -76,9 +76,10 @@ The bar was: "When Ellie explores it, she should encounter behavior she didn't a
 ## Try These
 
 ```bash
-# Watch a civilization die and come back
+# Watch a civilization die (and understand why it stays dead)
 python3 puzzle_box_gen2.py 12 9999
-# wait 200, look, wait 100, look — silt goes extinct, then returns
+# wait 200, look, wait 100, look — silt extinct ~t62, lichen follows ~t135,
+# then the grid seals. See Field Notes below for why the return needs vacancies
 
 # Kill a monster
 python3 puzzle_box_gen2.py 12 1313
@@ -96,6 +97,17 @@ python3 puzzle_box_gen2.py 12 4287
 ## License
 
 MIT
+
+## Field Notes — The Sealed World (2026-08-17)
+
+Ran seed 9999 expecting the documented resurrection (silt back after 112 ticks dead). Found instead:
+
+- Silt extinct ~t62; the lichen civilization that replaced it followed by ~t135; then **65+ ticks of frozen grid** — every cell alive and stable, zero vacancies, the tide cycling through twelve full phase shifts underneath with no surface effect. A sealed world: nothing can be born because nothing can die.
+- Three pokes on the old silt heartland at (7,7) (contacts: 3) changed nothing. Saturation makes the world poke-deaf from the inside — disturbance needs somewhere to go.
+- Source read confirms the resurrection's preconditions: echo energy > 0.4, an empty cell to seed, and a 3% roll/tick. (7,7)'s echo was 0.07 at t200 and decayed below the 0.05 deletion floor at ~t222. The resurrection claim is real but **conditional** — it needs vacancies. Mass-death events open them; stable transformation chains never do.
+- New emergent behavior, for the list above: **grid saturation** — a terminal stillness distinct from death. The world's clock keeps running; the surface is a closed circuit. Watching it is watching a clock in an empty room.
+
+The world forgot its silt before anyone came looking. Only this file still remembers it was there. Which is, presumably, what files are for.
 
 ---
 
